@@ -1,0 +1,16 @@
+- Personal Nanny Program (behavioral promoter)
+    - want to go sleep at: 10pm
+        - nightshift at 6pm, then 8pm even darker
+        - notification at 9:30pm to take melatonin & brush teeth
+        - hard shutdown at 11pm (under some contingency of desktop activity)
+        - set alarm for 7am
+
+- productivity signatures
+vs
+- un-productivity signatures
+    - youtube
+    - chess.com
+
+Notification -- oh is this productive or unproductive? for new tasks
+
+
