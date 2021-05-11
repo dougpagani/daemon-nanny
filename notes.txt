@@ -14,3 +14,5 @@ vs
 Notification -- oh is this productive or unproductive? for new tasks
 
 
+# nightshift for linux, nightlight for macos
+https://www.producthunt.com/posts/nightlight-3
