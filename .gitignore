@@ -8,3 +8,5 @@ userscripts/*
 
 node_modules
 
+# the symlinked-activity log
+logfile
