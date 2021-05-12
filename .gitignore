@@ -3,3 +3,6 @@ toggldesktop/
 # Emacs org lock files
 \#*.org\#
 
+userscripts/*
+!userscripts/.gitkeep
+
