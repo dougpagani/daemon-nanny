@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ################################################################################
 PATH_OF_SCRIPT_RELATIVE_TO_THIS_FILE=TODO
-NAME_OF_SCRIPT=
+NAME_OF_SCRIPT=TODO
 CRONSPEC='* * * * *' # runs every second
 EXTRA_ARGS=''
 NANNY_DOT_DIR="$HOME/.nanny/"
