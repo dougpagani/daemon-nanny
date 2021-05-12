@@ -52,3 +52,12 @@ https://github.com/mikaelbr/node-notifier
 - macos has reply + link-click, but it does not have dropdown (which is fine)
 ... this could be emulated with a linked-list sort of UI where you just "tab through" options until the right one is seen
 
+
+- Feature: add in a snooze-rule
+    > this would aim to ameliorate the problem of just turning off rules as one-off situational adjustments (but the problem is that "one-off" becomes a "off until it becomes a major problem again")
+    > this is an alternative strategy when compared against default-reset-configuration-of-safety-mechanisms-at-EOD
+    - no real ideas, but shitty idea: QPAC -- C for counter that gets auto-decremented (e.g. turn for 1 day, add a ;1 to the end of the statement)
+    - alternative: add a [re]-"start" time, it's like the inverse of an expiry time
+
+Q;P;A;C;T;W
+QPA;;SNOOZE-TIME;<interactive or always?>
