@@ -94,3 +94,4 @@ nanny add-hook "chat" 'message so and so about blah and blah'
     - friction/annoying -- e.g. every time you open a vm to play video games
         - on the computer this would be stuff like inverting colors, flip display, play annoying sounds
 
+- IF (and this is unsatisfying due to "habit-Source-of-action-truth" problems), you have a centralized task-switching, programmatically detectable nexus, you could hook into there for broad-spectrum-suggestion of tasks to jump into 
