@@ -1,1 +1,5 @@
 toggldesktop/
+
+# Emacs org lock files
+\#*.org\#
+
