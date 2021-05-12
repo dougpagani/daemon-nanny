@@ -1,19 +1,21 @@
 #!/usr/bin/env bash
 ################################################################################
 PATH_OF_SCRIPT_RELATIVE_TO_THIS_FILE=TODO
+NAME_OF_SCRIPT=
 CRONSPEC='* * * * *'
 EXTRA_ARGS=''
 
 main() {
     # grab toggldesktop since it has some useful code; it is ignored so we dont
     # deal with the git-in-git-problem.
-    git clone git@github.com:toggl-open-source/toggldesktop.git
+    git clone git@github.com:toggl-open-source/toggldesktop.git || :
     
     modify-crontab
 }
 modify-crontab() {
     crontabLine=$(prepare-crontab-line)
-    if (crontab -l | grep -q $NAME_OF_SCRIPT); then
+    # scriptPath="$absolutePathToScript" # HACK: comes from dynamic scope
+    if (crontab -l | grep -q "$crontabLine"); then
         : # do nothing, already exists
     else
         { \crontab -l; echo "$crontabLine"; } | \crontab - 
@@ -39,8 +41,7 @@ get-absolute-path-to-script() {
 # # If executed as a script, instead of sourced
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     set -euo pipefail
-    prepare-crontab-line
-    # main "$@"
+    main "$@"
 else
     echo "${BASH_SOURCE[0]}" sourced >&2
 fi
