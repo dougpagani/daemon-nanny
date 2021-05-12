@@ -1,11 +1,18 @@
 /* this is our snapshots/event stream of computer activity */
 const activeWindow = require('active-win');
+const fs = require('fs').promises
+const ACTIVITY_LOG_FILEPATH = './logfile' // TODO: dotfile
 
 async function main() {
   const rawWindowInfo = await getActiveWindowInfo()
-  const logEntry = buildLogEntryFromRawInfo(rawWindowInfo)
-  // appendLogEntryToLogFile()
-  console.log(logEntry)
+  const logEntryData = buildLogEntryFromRawInfo(rawWindowInfo)
+  console.log(logEntryData)
+  await appendLogEntryToLogFile(logEntryData)
+}
+
+async function appendLogEntryToLogFile(logEntryData) {
+  const logEntryLine = JSON.stringify(logEntryData) + '\n'
+  await fs.appendFile(ACTIVITY_LOG_FILEPATH, logEntryLine)
 }
 
 async function getActiveWindowInfo() {
