@@ -138,6 +138,8 @@ TODO -- example for this kind of thing
 
 #### Possible API ( Format of specification ):
 
+*CAVEAT*: key thing to realize about this specific design is that, in being able to specify it in a file like this, outside of code, means that we _cannot_ communicate between the three pieces (Q, P, and A). So, if query finds that _brave_ has >30 minutes of some browser video game, but you want it to apply for chrome as well, you can't say `QUERY;>30;pkill $nameOfprocessWhichTheQueryFound`. This doesnt mean it is impossible to achieve, you'd just have to duplicate an entry for QPA for both chrome & brave. Or likewise, you can't do a sort of "search for this TEXTSTRING" across all applications, and then kill the current-perpetrator.
+
 Special Syntax: (that we parse on the `;`s)
 
 ```
