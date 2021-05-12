@@ -1,9 +1,36 @@
 - Personal Nanny Program (behavioral promoter)
     - want to go sleep at: 10pm
         - nightshift at 6pm, then 8pm even darker
+            > vendored (non-system) cli dependency
+            > nightlight
         - notification at 9:30pm to take melatonin & brush teeth
+            > vendored (non-system) cli dependency
         - hard shutdown at 11pm (under some contingency of desktop activity)
+            > simple shell command
         - set alarm for 7am
+            > would be impossible since phones dont have api's
+            > ... could maybe set an alarm from the computer on-shutdown
+        - start russian roulette'ing at 10pm 
+            > hard mode for cmd-api
+        - shutdown youtube after 11pm
+        - build a max for runeterra usage per day, shutdown the app (grabbing pid)
+            > how does the app communicate the pid to the command???
+            > or pkill
+        - suggesting alternatives for any instantiations of undesired activities
+            > we can chain this with annoying system notifications
+            > do 3, on dismissal, you send another, and then another
+            > "would you like to meditate?" 
+            > todo list pop & suggest
+- we may be able to build a helper utility that simulates an ACTION spec in the cronenv
+    - would need to pare-down $PATH & rebuild it
+- npm run cleancron -- <copy-pasted-A-part-of-QPA>
+- QPA-specs "cyupa"
+- to prevent infinite shutdowns, could have safety mechanism of 10 minutes dont run on startup (easy to check startup time)
+- could have cross-platform A rosetta stone
+- for hard-limits, maybe we dont actually shutdown
+- rewards for predefined positive behavior (nice pictures, or system notification messages which are a nice pat on the back, puts on some nice music)
+- instead of shutdown, could do some funny fucky stuff like rotate display, invert colors
+- could use SIP to firmware-lock cronjobs to get the best of both worlds (cant turn-off, but also, is really annoying. you would never prefer booting to firmware over just stopping the dopamine thing)
 
 - productivity signatures
 vs
