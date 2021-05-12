@@ -4,6 +4,7 @@ PATH_OF_SCRIPT_RELATIVE_TO_THIS_FILE=TODO
 NAME_OF_SCRIPT=
 CRONSPEC='* * * * *' # runs every second
 EXTRA_ARGS=''
+ACTIVITY_LOG_FILEPATH="$HOME/.nanny-activity-log"
 
 main() {
     # grab toggldesktop since it has some useful code; it is ignored so we dont
@@ -11,6 +12,8 @@ main() {
     git clone git@github.com:toggl-open-source/toggldesktop.git || :
 
     preflight-helper-utility-check jq
+
+    ln -s "$ACTIVITY_LOG_FILEPATH" ./logfile 
 
     modify-crontab
 }
