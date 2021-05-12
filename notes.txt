@@ -65,3 +65,6 @@ QPA;;SNOOZE-TIME;<interactive or always?>
 - We will commit qpa-specs just as a fast early iteration nice thing to do, but the architecture will still be grabbing its configuration from a $HOME-dir dotfile. Maybe we stop committing these in the future but for now it will be nice to share.
     > what we will NOT be committing is the log file (which has a lot of personal info)
 
+
+- chatdoug/chatdylan (chrome aliases) can be a great v0 for context-aware hooks
+    > so, that entails bringing up an "open/curious items" notes page, associated with that person
