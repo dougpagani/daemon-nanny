@@ -64,6 +64,10 @@ get-absolute-path-to-script() {
 # # If executed as a script, instead of sourced
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     set -euo pipefail
+    die 'TODO: add to bootstrap the instantiation of a template QPA-file in the dot-directory
+... and maybe the log, too
+'
+
     main "$@"
 else
     echo "${BASH_SOURCE[0]}" sourced >&2
