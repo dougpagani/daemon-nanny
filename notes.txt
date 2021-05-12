@@ -82,3 +82,15 @@ nanny add-hook "chat" 'message so and so about blah and blah'
     > does it? possibly yea, but maybe it could be implemented in some special manner where you dont need to dynamically modify the QPA file, but instead, can have some other special file that gets appended to
     - could queue-up a bunch of things to watch when opening youtube non-productively
 
+- Enumeration of behavioral modification style:
+    - draconian -- e.g. shutdown the machine if you're being a dingus
+    - nagging -- e.g. "hey dont do that, you know you shouldnt be doing that"
+    - helpful -- e.g. "hey remember this thing you wanted to remember"
+        - always want this, awesome!
+    - suggestive/"helpful" -- e.g. "hey are you really sure you want to be doing this??? you could be eating your vegetables!"
+        - a softer alternative, but similar circumstances, to draconian
+    - rewarding -- e.g. "good job doing this thing I see you doing!"
+        - e.g. on computer -- showing pictures you've pre-assigned as nice
+    - friction/annoying -- e.g. every time you open a vm to play video games
+        - on the computer this would be stuff like inverting colors, flip display, play annoying sounds
+
