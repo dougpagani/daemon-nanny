@@ -16,3 +16,12 @@ Notification -- oh is this productive or unproductive? for new tasks
 
 # nightshift for linux, nightlight for macos
 https://www.producthunt.com/posts/nightlight-3
+
+# Notifications in a nodejs context (cross-platform solution)
+https://github.com/mikaelbr/node-notifier
+# cross-platform considerations:
+- ubuntu's notify-osd sucks a lot, but there are other possibilities for more options
+    > mostly, lacks link-travel-on-click functionality + reply functionality
+- macos has reply + link-click, but it does not have dropdown (which is fine)
+... this could be emulated with a linked-list sort of UI where you just "tab through" options until the right one is seen
+
