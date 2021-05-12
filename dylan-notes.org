@@ -1,0 +1,44 @@
+* What I want out of the system
+** Runs automatically
+- on-startup as daemon
+- cron-job [easier to implement]
+** No GUI -- fully configured in files
+** Multiple types of behavior patterns
+- no access after certain time [first target due to ease]
+- only a certain amount of time per day
+- only a certain amount of time per session
+** Flexible Actions taken in response to events
+- shut down computer impolitely
+- suggest something productive
+  - a todo item
+  - a daily healthy habit
+- shut down computer politely
+- notification 
+- run any arbitrary script
+- play an ugly sound
+** Blacklisting vs. Whitelisting
+Blacklisting -- just trying to catch the big offenders
+- if on a random website chances are it's productive
+* V0
+- cron-job
+- NO GUI 
+- No in-memory database -- written to a file
+- Behavior Pattern: No access after a certain time
+  - every minute poll and record a log of the active window
+  - if > X polls for an unproductive use of time in a certain time window, then
+    take action
+- Action: impolitely shutdown computer 
+** script
+- data-logging
+- condition-action table
+  - register condition-action pairs to check against the data log every minute
+    - Action is a shell script 
+    - Condition is a predicate for the data table
+** Examples
+- After 10pm, if this data point is something unproductive hard red-shift as the action
+** Build
+*** TODO Every minute cron-job
+*** TODO get active window
+*** TODO write to log
+*** TODO condition-action table
+*** TODO Put it all together 
