@@ -1,0 +1,17 @@
+{
+  "name": "daemon-nanny",
+  "version": "1.0.0",
+  "description": "",
+  "main": "a-win-tryout.js",
+  "dependencies": {
+    "active-win": "^7.1.0",
+    "node-notifier": "^9.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
