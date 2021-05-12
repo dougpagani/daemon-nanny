@@ -6,3 +6,5 @@ toggldesktop/
 userscripts/*
 !userscripts/.gitkeep
 
+node_modules
+
