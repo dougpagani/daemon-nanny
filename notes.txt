@@ -71,3 +71,14 @@ QPA;;SNOOZE-TIME;<interactive or always?>
 
 - chatdoug/chatdylan (chrome aliases) can be a great v0 for context-aware hooks
     > so, that entails bringing up an "open/curious items" notes page, associated with that person
+
+
+
+- Easy context-dependent hooks -- distraction-prevention task-capture
+```sh
+nanny add-hook "chat" 'message so and so about blah and blah'
+```
+    - dylan says this brings in an additional type -- "the one time hook"
+    > does it? possibly yea, but maybe it could be implemented in some special manner where you dont need to dynamically modify the QPA file, but instead, can have some other special file that gets appended to
+    - could queue-up a bunch of things to watch when opening youtube non-productively
+
