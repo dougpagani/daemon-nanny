@@ -61,3 +61,7 @@ https://github.com/mikaelbr/node-notifier
 
 Q;P;A;C;T;W
 QPA;;SNOOZE-TIME;<interactive or always?>
+
+- We will commit qpa-specs just as a fast early iteration nice thing to do, but the architecture will still be grabbing its configuration from a $HOME-dir dotfile. Maybe we stop committing these in the future but for now it will be nice to share.
+    > what we will NOT be committing is the log file (which has a lot of personal info)
+
