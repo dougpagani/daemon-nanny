@@ -1,6 +1,47 @@
 #!/usr/bin/env bash
 ################################################################################
+PATH_OF_SCRIPT_RELATIVE_TO_THIS_FILE=TODO
+CRONSPEC='* * * * *'
+EXTRA_ARGS=''
 
-# grab toggldesktop since it has some useful code; it is ignored so we dont
-# deal with the git-in-git-problem.
-git clone git@github.com:toggl-open-source/toggldesktop.git
+main() {
+    # grab toggldesktop since it has some useful code; it is ignored so we dont
+    # deal with the git-in-git-problem.
+    git clone git@github.com:toggl-open-source/toggldesktop.git
+    
+    modify-crontab
+}
+modify-crontab() {
+    crontabLine=$(prepare-crontab-line)
+    if (crontab -l | grep -q $NAME_OF_SCRIPT); then
+        : # do nothing, already exists
+    else
+        { \crontab -l; echo "$crontabLine"; } | \crontab - 
+    fi
+}
+prepare-crontab-line() {
+    scriptName="$(get-absolute-path-to-script)"
+    echo "$CRONSPEC $scriptName $EXTRA_ARGS"
+}
+
+get-absolute-path-to-script() {
+    thisFileRelativeToCwd="${BASH_SOURCE[0]}"
+    thisFileFullPath="$(realpath "$thisFileRelativeToCwd")"
+    thisDir=$(dirname "$thisFileFullPath")
+
+    cd "$thisDir"
+    absolutePathToScript=$(realpath "$PATH_OF_SCRIPT_RELATIVE_TO_THIS_FILE")
+    cd - &> /dev/null
+
+    echo -n "$absolutePathToScript"
+}
+
+# # If executed as a script, instead of sourced
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    set -euo pipefail
+    prepare-crontab-line
+    # main "$@"
+else
+    echo "${BASH_SOURCE[0]}" sourced >&2
+fi
+
