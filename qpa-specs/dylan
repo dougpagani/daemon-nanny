@@ -1,0 +1,2 @@
+QUERY;PREDICATE;ACTION
+jq .;1===1;echo do nothing
