@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ################################################################################
-PATH_OF_SCRIPT_RELATIVE_TO_THIS_FILE=TODO
+PATH_OF_SCRIPT_RELATIVE_TO_THIS_FILE=index.js
 NAME_OF_SCRIPT=TODO
 CRONSPEC='* * * * *' # runs every second
 EXTRA_ARGS=''
@@ -13,7 +13,11 @@ QPA_SPEC_EXAMPLE='jq .;1===1;echo do nothing'
 main() {
     # grab toggldesktop since it has some useful code; it is ignored so we dont
     # deal with the git-in-git-problem.
-    git clone git@github.com:toggl-open-source/toggldesktop.git || :
+    if [[ -d toggldesktop ]]; then
+        : # already there
+    else
+        git clone git@github.com:toggl-open-source/toggldesktop.git
+    fi
 
     preflight-helper-utility-check jq
 
@@ -67,7 +71,11 @@ init-files() {
     # This is just a convenience linking, so you dont have to go into your home
     # directory everytime you want to work with your log file, but can just
     # stay in your project directory.
-    ln -s "$ACTIVITY_LOG_FILEPATH" ./logfile 
+    if [[ -L ./logfile ]]; then
+        : # do nothing, link already exists
+    else
+        ln -s "$ACTIVITY_LOG_FILEPATH" ./logfile 
+    fi
 
 }
 
@@ -102,7 +110,8 @@ modify-crontab() {
 }
 prepare-crontab-line() {
     scriptName="$(get-absolute-path-to-script)"
-    echo "$CRONSPEC $scriptName $EXTRA_ARGS"
+    nodePath="$npm_node_execpath" # dependent upon having been
+    echo "$CRONSPEC $nodePath $scriptName $EXTRA_ARGS"
 }
 
 get-absolute-path-to-script() {

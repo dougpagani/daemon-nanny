@@ -3,6 +3,7 @@ const activeWindow = require('active-win');
 const fs = require('fs').promises
 const ACTIVITY_LOG_FILEPATH = require('path').join(require('os').homedir(), '.nanny-activity-log')
 
+
 async function main() {
   const rawWindowInfo = await getActiveWindowInfo()
   const logEntryData = buildLogEntryFromRawInfo(rawWindowInfo)
@@ -79,3 +80,5 @@ if (require.main === module) {
 process.on('unhandledRejection', (reason) => {
   console.log("\x1b[38;5;1m UPR: ", reason)
 });
+
+module.exports = main
