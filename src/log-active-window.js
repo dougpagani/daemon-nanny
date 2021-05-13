@@ -1,7 +1,7 @@
 /* this is our snapshots/event stream of computer activity */
 const activeWindow = require('active-win');
 const fs = require('fs').promises
-const ACTIVITY_LOG_FILEPATH = require('path').join(require('os').homedir(), '.nanny-activity-log')
+const ACTIVITY_LOG_FILEPATH = require('path').join(require('os').homedir(), '.nanny/activity.log')
 
 
 async function main() {
