@@ -9,6 +9,7 @@ ACTIVITY_LOG_FILEPATH="$NANNY_DOT_DIR/activity.log"
 QPA_SPECS_FILEPATH="$NANNY_DOT_DIR/qpa-specs"
 QPA_SPEC_SYNTAX_HEADER='QUERY;PREDICATE;ACTION'
 QPA_SPEC_EXAMPLE='jq .;1===1;echo do nothing'
+PROJ_DIR_ROOT="$(pwd)" # only works since npm always runs out of proj-root
 
 main() {
     # grab toggldesktop since it has some useful code; it is ignored so we dont
@@ -110,8 +111,9 @@ modify-crontab() {
 }
 prepare-crontab-line() {
     scriptName="$(get-absolute-path-to-script)"
-    nodePath="$npm_node_execpath" # dependent upon having been
-    echo "$CRONSPEC $nodePath $scriptName $EXTRA_ARGS"
+    nodePath="$npm_node_execpath" # dependent upon having been run with an npm script
+    cronlogfile="${PROJ_DIR_ROOT}/cronlog"
+    echo "$CRONSPEC $nodePath $scriptName $EXTRA_ARGS &> $cronlogfile"
 }
 
 get-absolute-path-to-script() {
