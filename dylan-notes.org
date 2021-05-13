@@ -42,3 +42,13 @@ Blacklisting -- just trying to catch the big offenders
 *** TODO write to log
 *** TODO condition-action table
 *** TODO Put it all together 
+* Interesting usage patterns
+** Context based to-dos
+- context-based open a file in emacs 
+- org-capture templates to have items
+*** examples
+- queue up chats to send next time open chat or email app
+- queue up things to watch next time you open youtube
+** Start an anki review or anything else productive every X action
+** Use open toggl app as the between task hook
+** Queue up reminders to stay in touch with people
