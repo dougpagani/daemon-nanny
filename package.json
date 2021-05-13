@@ -4,7 +4,7 @@
   "description": "",
   "main": "a-win-tryout.js",
   "dependencies": {
-    "active-win": "^7.1.0",
+    "active-win": "git+ssh://git@github.com:dougpagani/active-win.git",
     "node-notifier": "^9.0.1"
   },
   "devDependencies": {},

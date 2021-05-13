@@ -12,3 +12,6 @@ node_modules
 logfile
 # ... and the log of any output that comes from the script
 cronlog
+
+# Their fork swallows errors so this is to unswallow those errors
+active-win/

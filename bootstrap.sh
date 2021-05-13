@@ -20,11 +20,25 @@ main() {
         git clone git@github.com:toggl-open-source/toggldesktop.git
     fi
 
+    # They swallow errors so let's install in dev mode
+    install-active-win-dev-mode
+
     preflight-helper-utility-check jq
 
     init-files
 
     modify-crontab
+}
+
+install-active-win-dev-mode() {
+    # clone
+    git clone https://github.com/dougpagani/active-win
+    # Now, since we want to simultaneously develop two things in a
+    # version-controllable way, let's link.
+    cd active-win 
+    npm link
+    cd - &> /dev/null
+    npm link active-win
 }
 
 init-files() {
