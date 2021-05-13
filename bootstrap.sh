@@ -113,7 +113,7 @@ prepare-crontab-line() {
     scriptName="$(get-absolute-path-to-script)"
     nodePath="$npm_node_execpath" # dependent upon having been run with an npm script
     cronlogfile="${PROJ_DIR_ROOT}/cronlog"
-    echo "$CRONSPEC $nodePath $scriptName $EXTRA_ARGS &> $cronlogfile"
+    echo "$CRONSPEC $nodePath $scriptName $EXTRA_ARGS >> $cronlogfile 2>&1"
 }
 
 get-absolute-path-to-script() {

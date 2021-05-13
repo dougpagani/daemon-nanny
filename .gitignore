@@ -10,3 +10,5 @@ node_modules
 
 # the symlinked-activity log
 logfile
+# ... and the log of any output that comes from the script
+cronlog
