@@ -20,14 +20,14 @@ main() {
         git clone git@github.com:toggl-open-source/toggldesktop.git
     fi
 
+    modify-crontab
+
     # They swallow errors so let's install in dev mode
     install-active-win-dev-mode
 
     preflight-helper-utility-check jq
 
     init-files
-
-    modify-crontab
 }
 
 install-active-win-dev-mode() {
