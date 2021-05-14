@@ -1,2 +1,4 @@
-QUERY;PREDICATE;ACTION
-jq .;1===1;echo do nothing
+# QUERY;PREDICATE;ACTION
+# cat .nanny/activity.log | jq -r 'select(.app=="Emacs")' | jq -s length;>=25;play ~/Downloads/Dog\ Howling\ At\ Moon-SoundBible.com-1369876823.wav 
+
+
