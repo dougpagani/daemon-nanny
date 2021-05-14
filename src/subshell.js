@@ -27,6 +27,10 @@ async function parseQpaListFromFile() {
 async function processSingleQpa (qpa) {
   const queryResult = await executeQpaQuery(qpa.query) 
   const predicateResult = executeQpaPredicate(queryResult,qpa.predicate)
+  if ( predicateResult === true ) {
+    const actionResult = await executeQpaAction(qpa.action)
+    return actionResult
+  }
   return predicateResult
 }
 
@@ -80,8 +84,13 @@ async function executeQpaQuery(query) {
 function executeQpaPredicate(queryResult, predicate) {
   return eval(queryResult + predicate)
 }
-function executeQpaAction() {
-  throw Error('Function Not Yet Implemented')
+function executeQpaAction(action) {
+  // This is just a shim layer until they differentiate
+  // They should be different functions but at this point they
+  // ... don't have different implementations
+  // In the future it's imagined that action will have built-in
+  // ... actions and query will have built-in query helpers
+  return executeQpaQuery(action)
 }
 // For a fancier invocation, build from here:
 // https://gist.github.com/benjamingr/0237932cee84712951a2
