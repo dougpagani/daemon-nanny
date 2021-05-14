@@ -1,4 +1,4 @@
 # QUERY;PREDICATE;ACTION
-cat .nanny/activity.log | jq -r 'select(.app=="Emacs")' | jq -s length;>=25;play ./resources/dog-howling-at-moon.wav
+cat ~/.nanny/activity.log | jq -r 'select(.app=="Emacs")' | jq -s length;>=25;play ~/repos/daemon-nanny/resources/dog-howling-at-moon.wav
 
 
