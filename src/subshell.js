@@ -2,15 +2,15 @@ const fs = require('fs').promises
 const child_process = require('child_process');
 
 if (require.main === module) {
-  main()
+  main().then(console.log)
 }
 async function main() {
   const qpaList  = await parseQpaListFromFile()
-  console.log(`qpaList (type: ${typeof qpaList}):`, qpaList)
-  const dooby = await Promise.all(
+  const qpaSpecResults = await Promise.all(
     qpaList.map(processSingleQpa)
   )
-  console.log('dooby:', dooby)
+
+  return qpaSpecResults
 }
 
 async function parseQpaListFromFile() {
@@ -25,13 +25,13 @@ async function parseQpaListFromFile() {
 }
 
 async function processSingleQpa (qpa) {
-  const queryResult = await executeQpaQuery(qpa.query) 
-  const predicateResult = executeQpaPredicate(queryResult,qpa.predicate)
-  if ( predicateResult === true ) {
-    const actionResult = await executeQpaAction(qpa.action)
-    return actionResult
+  const results = {}
+  results.query = await executeQpaQuery(qpa.query) 
+  results.predicate = executeQpaPredicate(results.query,qpa.predicate)
+  if ( results.predicate  === true ) {
+    results.action = await executeQpaAction(qpa.action)
   }
-  return predicateResult
+  return { spec: qpa, results }
 }
 
 function parseQpaSpec(qpaLine) {
