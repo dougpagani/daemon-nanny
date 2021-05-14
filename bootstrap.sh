@@ -125,13 +125,13 @@ modify-crontab() {
 }
 
 prepare-crontab-line() {
-    scriptName="$(get-absolute-path-to-script)"
+    scriptPath="$(get-absolute-path-to-script)"
     nodePath="$npm_node_execpath" # dependent upon having been run with an npm script
     cronlogfile="${PROJ_DIR_ROOT}/cronlog"
     if (is-linux); then
-        echo "$CRONSPEC DISPLAY='${DISPLAY}' $nodePath $scriptName $EXTRA_ARGS >> $cronlogfile 2>&1"
+        echo "$CRONSPEC DISPLAY='${DISPLAY}' $nodePath $scriptPath $EXTRA_ARGS >> $cronlogfile 2>&1"
     else
-        echo "$CRONSPEC $nodePath $scriptName $EXTRA_ARGS >> $cronlogfile 2>&1"
+        echo "$CRONSPEC $nodePath $scriptPath $EXTRA_ARGS >> $cronlogfile 2>&1"
     fi
 }
 
