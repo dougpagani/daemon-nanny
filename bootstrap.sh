@@ -140,7 +140,7 @@ prepare-crontab-line() {
         linuxDisplayString=""
 
     fi
-    echo "$CRONSPEC $linuxDisplayString $nodePath $npmPath --prefix ${PROJ_DIR_ROOT} run $scriptName $EXTRA_ARGS >> $cronlogfile 2>&1"
+    echo "$CRONSPEC $linuxDisplayString $nodePath $npmPath --scripts-prepend-node-path=true --prefix ${PROJ_DIR_ROOT} run $scriptName $EXTRA_ARGS >> $cronlogfile 2>&1"
 }
 
 is-linux() {
