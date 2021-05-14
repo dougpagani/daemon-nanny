@@ -170,3 +170,33 @@ cat example-jsons.log  | jq -s |  jq 'map(select(.color=="green"))'  | jq length
 
 Predicate-Action:
 if over 30, shutdown machine
+
+### `PREDICATE` possibilities
+You could see this going a few different ways
+`let QUERY = ...
+> get the most-used app for the day
+
+##### As a solo thing (useless)
+```
+QUERY;1===1;ACTION
+```
+If you do this, you can't refer to the query-result. Obviously this is pretty useless. So we just want to "add" query back in.
+
+##### As a substitution-string + eval
+```
+QUERY;QUERY===1;ACTION
+```
+... where query is a special symbol in the qpa-language, which gets substituted with the query-result value.
+
+##### Alternative: left-to-right
+```
+QUERY;>1;ACTION
+```
+... where you do a concatenate + eval -- it's as if you're reading simply from left-to-right
+This would also open-up the possibility for some quick, easy, more complex conditionals:
+
+```
+QUERY;.contains('reddit');ACTION
+# where you were grabbing, say, url's
+```
+
