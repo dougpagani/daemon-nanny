@@ -21,7 +21,15 @@ async function getActiveWindowInfo() {
 }
 
 function getTimeStamp() {
-  return new Date();
+  // This is a little funky, but I think is the right way to do this using native
+  // JavaScript Dates. I tried using the toLocalString() method but that outputs the
+  // Date in 12 hour AM/PM time which is bad for sorting. What I really wanted was
+  // just to subtract the timezone offset from the UTC derived date so that's what I
+  // did.
+  const now = new Date()
+  const localTimezoneOffset = now.getTimezoneOffset()/60
+  now.setHours( now.getHours() - localTimezoneOffset )
+  return now 
   // e.g. 2021-05-12T20:37:51.243Z
 }
 
