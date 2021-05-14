@@ -32,7 +32,11 @@ main() {
 
 install-active-win-dev-mode() {
     # clone
-    git clone https://github.com/dougpagani/active-win
+    if [[ -d active-win ]]; then
+        : # already there
+    else
+        git clone https://github.com/dougpagani/active-win
+    fi
     # Now, since we want to simultaneously develop two things in a
     # version-controllable way, let's link.
     cd active-win 
