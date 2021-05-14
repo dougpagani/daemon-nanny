@@ -97,3 +97,6 @@ function executeQpaAction(action) {
 process.on('unhandledRejection', (reason) => {
   console.error("\x1b[38;5;1m UPR: ", reason, "\033[0m")
 });
+
+module.exports = main
+
