@@ -2,7 +2,7 @@
   "name": "daemon-nanny",
   "version": "1.0.0",
   "description": "",
-  "main": "a-win-tryout.js",
+  "main": "index.js",
   "dependencies": {
     "active-win": "git+ssh://git@github.com:dougpagani/active-win.git",
     "node-notifier": "^9.0.1"
@@ -10,6 +10,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
     "bootstrap": "bash bootstrap.sh"
   },
   "keywords": [],
