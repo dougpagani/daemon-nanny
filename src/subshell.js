@@ -95,5 +95,5 @@ function executeQpaAction(action) {
 // For a fancier invocation, build from here:
 // https://gist.github.com/benjamingr/0237932cee84712951a2
 process.on('unhandledRejection', (reason) => {
-  console.log("\x1b[38;5;1m UPR: ", reason, "\033[0m")
+  console.error("\x1b[38;5;1m UPR: ", reason, "\033[0m")
 });
