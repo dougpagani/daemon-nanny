@@ -8,7 +8,7 @@ async function main() {
   const qpaList  = await parseQpaListFromFile()
   console.log(`qpaList (type: ${typeof qpaList}):`, qpaList)
   const dooby = await Promise.all(
-    qpaList.map(executeQpaQuery)
+    qpaList.map(processSingleQpa)
   )
   console.log('dooby:', dooby)
 }
@@ -24,6 +24,11 @@ async function parseQpaListFromFile() {
   return qpaList
 }
 
+async function processSingleQpa (qpa) {
+  const queryResult = await executeQpaQuery(qpa.query) 
+  const predicateResult = executeQpaPredicate(queryResult,qpa.predicate)
+  return predicateResult
+}
 
 function parseQpaSpec(qpaLine) {
   [ query, predicate, action ] = qpaLine.split(';')
@@ -42,10 +47,9 @@ function parseQpaSpec(qpaLine) {
    
 }
 
-async function executeQpaQuery(qpa) {
+async function executeQpaQuery(query) {
   // DOCS: https://nodejs.org/api/child_process.html
   let childData = ""
-  const query = qpa.query
 
   const queryProm = new Promise( (resolve, reject) => {
 
@@ -73,8 +77,8 @@ async function executeQpaQuery(qpa) {
   // function childFinished() { didChildFinish = true }
   // const child = child_process.exec(query, childFinished)
 }
-function executeQpaPredicate() {
-  throw Error('Function Not Yet Implemented')
+function executeQpaPredicate(queryResult, predicate) {
+  return eval(queryResult + predicate)
 }
 function executeQpaAction() {
   throw Error('Function Not Yet Implemented')
