@@ -135,15 +135,11 @@ prepare-crontab-line() {
     npmPath="$(printf '%s' "$nodePath" | sed 's_node$_npm_')"
     cronlogfile="${PROJ_DIR_ROOT}/cronlog"
     if (is-linux); then
-        # echo "$CRONSPEC DISPLAY='${DISPLAY}' $nodePath $scriptPath $EXTRA_ARGS >> $cronlogfile 2>&1"
-        echo "$CRONSPEC INIT_CWD=$PROJ_DIR_ROOT DISPLAY='${DISPLAY}' $npmPath run $scriptName $EXTRA_ARGS >> $cronlogfile 2>&1"
+        linuxDisplayString="DISPLAY='${DISPLAY}'"
     else
-        # echo "$CRONSPEC $nodePath $scriptPath $EXTRA_ARGS >> $cronlogfile 2>&1"
-        # node path/to/script/index.js
-        # -> but instead...
-        # $INIT_CWD $npm_exec run $entrypointname
-        echo "$CRONSPEC INIT_CWD=$PROJ_DIR_ROOT $npmPath run $scriptName $EXTRA_ARGS >> $cronlogfile 2>&1"
+        linuxDisplayString=""
     fi
+    echo "$CRONSPEC $linuxDisplayString $nodePath $npmPath run $scriptName $EXTRA_ARGS >> $cronlogfile 2>&1"
 }
 
 is-linux() {
