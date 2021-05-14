@@ -1,4 +1,4 @@
 # QUERY;PREDICATE;ACTION
 # echo xxxxx;echo;echo
-cat logfile | jq 'select(.app=="Signal")' | jq 'select(.timestamp > "'$(date +%Y-%m-%d)'")' | jq -s length;>=1;echo do nothing
-cat logfile | jq 'select(.app=="Signal")' | jq 'select(.timestamp > "'$(date +%Y-%m-%d)'")' | jq -s length;>=100000;echo do SOMETHING YOU GODFORSAKEN MUTT
+cat logfile | jq 'select(.app=="Signal")' | jq 'select(.timestamp > "'$(date +%Y-%m-%d)'")' | jq -s length; >=50; osascript -e "display notification         \"-- sent from the commandline.\"         with title \"ayoooooo\""
+cat logfile | jq 'select(.app=="Signal")' | jq 'select(.timestamp > "'$(date +%Y-%m-%d)'")' | jq -s length;>=100; pkill Signal

@@ -11,6 +11,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
+    "start:dev": "echo '^C to quit'; while true; do printf '.'; sleep 1; node index.js; done",
+    "__start:dev": "This command goes 60x faster and is for dev purposes",
     "CURRENT": "node src/check-and-run-qpas.js",
     "bootstrap": "bash bootstrap.sh"
   },
