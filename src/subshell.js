@@ -44,21 +44,20 @@ function parseQpaSpec(qpaLine) {
 
 async function executeQpaQuery(qpa) {
   // DOCS: https://nodejs.org/api/child_process.html
-  let childData
+  let childData = ""
   const query = qpa.query
 
   const queryProm = new Promise( (resolve, reject) => {
 
-    console.log('query:', query)
     const child = child_process.exec(query)
 
     // Process Event Configurations
-    // child.stdout.on('data', data => childData+=data)
-    child.stdout.on('data', console.log)
-    // child.stderr.on('data', reject)
+    child.stdout.on('data', data => childData+=data)
+    // child.stdout.on('data', console.log)
+    child.stderr.on('data', reject)
     child.stderr.on('data', console.error)
     child.on('error', reject)
-    child.on('close', () => resolve(childData))
+    child.on('close', () => resolve(childData.trim()))
   })
 
   return queryProm
