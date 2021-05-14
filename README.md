@@ -17,6 +17,8 @@ We are not entirely sure yet. It's a bit amorphous. Here are some possible, but 
 
 Start living life! Come back the next morning and run some of these commands to get started with looking at the data:
 
+See docs/query-building-case-study.md as a good first-approach example.
+
 ```
 TODO -- jq commands that work well
 ```

@@ -1,2 +1,2 @@
 QUERY;PREDICATE;ACTION
-jq .;1===1;echo do nothing
+jq 'select(.app=="Signal")' | jq 'select(.timestamp > "'$(date +%Y-%m-%d)'")' | jq -s length;1===1;echo do nothing
