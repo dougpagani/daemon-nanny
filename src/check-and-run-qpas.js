@@ -1,6 +1,8 @@
 const fs = require('fs').promises
 const child_process = require('child_process');
 
+const ACTIVITY_LOG_FILEPATH = require('path').join(require('os').homedir(), '.nanny/qpa-specs')
+
 if (require.main === module) {
   main().then(console.log)
 }
@@ -14,7 +16,7 @@ async function main() {
 }
 
 async function parseQpaListFromFile() {
-  const qpaFile = await fs.readFile('./qpa-specs/doug', "utf-8")
+  const qpaFile = await fs.readFile(ACTIVITY_LOG_FILEPATH, "utf-8")
   const qpaList = qpaFile
     .split('\n')
     .filter(el => ! el.startsWith('#')) // adsf
