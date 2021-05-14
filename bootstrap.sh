@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 ################################################################################
 PATH_OF_SCRIPT_RELATIVE_TO_THIS_FILE=index.js
-NAME_OF_SCRIPT=TODO
+NAME_OF_SCRIPT=start
 CRONSPEC='* * * * *' # runs every second
 EXTRA_ARGS=''
 NANNY_DOT_DIR="$HOME/.nanny/"
@@ -130,12 +130,19 @@ modify-crontab() {
 
 prepare-crontab-line() {
     scriptPath="$(get-absolute-path-to-script)"
+    scriptName="${NAME_OF_SCRIPT}"
     nodePath="$npm_node_execpath" # dependent upon having been run with an npm script
+    npmPath="$(printf '%s' "$nodePath" | sed 's_node$_npm_')"
     cronlogfile="${PROJ_DIR_ROOT}/cronlog"
     if (is-linux); then
-        echo "$CRONSPEC DISPLAY='${DISPLAY}' $nodePath $scriptPath $EXTRA_ARGS >> $cronlogfile 2>&1"
+        # echo "$CRONSPEC DISPLAY='${DISPLAY}' $nodePath $scriptPath $EXTRA_ARGS >> $cronlogfile 2>&1"
+        echo "$CRONSPEC INIT_CWD=$PROJ_DIR_ROOT DISPLAY='${DISPLAY}' $npmPath run $scriptName $EXTRA_ARGS >> $cronlogfile 2>&1"
     else
-        echo "$CRONSPEC $nodePath $scriptPath $EXTRA_ARGS >> $cronlogfile 2>&1"
+        # echo "$CRONSPEC $nodePath $scriptPath $EXTRA_ARGS >> $cronlogfile 2>&1"
+        # node path/to/script/index.js
+        # -> but instead...
+        # $INIT_CWD $npm_exec run $entrypointname
+        echo "$CRONSPEC INIT_CWD=$PROJ_DIR_ROOT $npmPath run $scriptName $EXTRA_ARGS >> $cronlogfile 2>&1"
     fi
 }
 
