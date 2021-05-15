@@ -120,7 +120,6 @@ preflight-helper-utility-check() {
 
 modify-crontab() {
     crontabLine="$(prepare-crontab-line)"
-    # scriptPath="$absolutePathToScript" # HACK: comes from dynamic scope
     if (crontab -l | grep -q "$crontabLine"); then
         : # do nothing, already exists
     else
