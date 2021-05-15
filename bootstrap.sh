@@ -130,7 +130,7 @@ modify-crontab() {
 oldPath=\$PATH
 PATH=$PATH 
 $crontabLine
-PATH=\$oldPath
+# CAVEAT: CANT REST OLD PATH B/C VARIABLES ARE ONE-WAY
 # END: AUTO-INSERTED BY DAEMON-NANNY 
 # --------------------------------------
 EOM
