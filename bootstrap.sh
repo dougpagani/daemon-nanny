@@ -123,6 +123,7 @@ modify-crontab() {
     if (crontab -l | grep -q "$crontabLine"); then
         : # do nothing, already exists
     else
+        set +e # disabled because we let read encounter EOF -- https://stackoverflow.com/a/67066283
         read -r -d '' crontabEntry << EOM
 # --------------------------------------
 # AUTO-INSERTED BY DAEMON-NANNY 
@@ -133,6 +134,7 @@ PATH=\$oldPath
 # END: AUTO-INSERTED BY DAEMON-NANNY 
 # --------------------------------------
 EOM
+        set -e
         { \crontab -l; echo "$crontabEntry"; } | \crontab - 
     fi
 }
@@ -147,7 +149,6 @@ prepare-crontab-line() {
         linuxDisplayString="DISPLAY='${DISPLAY}'"
     else
         linuxDisplayString=""
-
     fi
     echo "$CRONSPEC $linuxDisplayString $nodePath $npmPath --scripts-prepend-node-path=true --prefix ${PROJ_DIR_ROOT} run $scriptName $EXTRA_ARGS >> $cronlogfile 2>&1"
 }
