@@ -119,12 +119,22 @@ preflight-helper-utility-check() {
 
 
 modify-crontab() {
-    crontabLine=$(prepare-crontab-line)
+    crontabLine="$(prepare-crontab-line)"
     # scriptPath="$absolutePathToScript" # HACK: comes from dynamic scope
     if (crontab -l | grep -q "$crontabLine"); then
         : # do nothing, already exists
     else
-        { \crontab -l; echo "$crontabLine"; } | \crontab - 
+        read -r -d '' crontabEntry << EOM
+# --------------------------------------
+# AUTO-INSERTED BY DAEMON-NANNY 
+oldPath=\$PATH
+PATH=$PATH 
+$crontabLine
+PATH=\$oldPath
+# END: AUTO-INSERTED BY DAEMON-NANNY 
+# --------------------------------------
+EOM
+        { \crontab -l; echo "$crontabEntry"; } | \crontab - 
     fi
 }
 
