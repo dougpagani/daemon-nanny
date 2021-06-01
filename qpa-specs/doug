@@ -10,3 +10,5 @@ cat logfile | jq 'select(.timestamp > "'$(date +%Y-%m-%d)'T21:00")' | jq 'select
 cat logfile | jq 'select(.timestamp < "'$(date +%Y-%m-%d)'T05:00")' | jq 'select(.title | contains("YouTube"))' | jq -s length;>=1; nightlight on
 # TODO: If it has been 30 minutes of a wind-down activity, kill the app
 # cat logfile | jq 'select(has("url"))' |  jq 'select(.url | contains("youtube"))' -c | jq .title
+
+# TODO: use desk-getup-routine.txt, checking for idle, and after 2 hours of activity time w/o idle, suggest to stretch
