@@ -1,0 +1,11 @@
+- on every hour increment of youtube, reddit, etc., list the hours accumulated thus-far
+
+- a parallel system/API: event/action, skipping the query/predicate completely
+... this would be more responsive than the minute-ly basis
+
+- or another parallel API: QUESTION: query/action
+... this is a sort-of merger between the two, where it needs access to more than one aspect of a query
+... e.g. if the just-opened app is X, and you've already had 30mins of activity with that app, then nag with a message
+... maybe this is related to the idea of STATE -- where the state here is that, for the day, some threshhold has been hit
+
+- nightlight use-case is cool -- instantly on "wind-down" activities, trigger hard red-shift

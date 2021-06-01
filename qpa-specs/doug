@@ -1,4 +1,12 @@
 # QUERY;PREDICATE;ACTION
 # echo xxxxx;echo;echo
-cat logfile | jq 'select(.app=="Signal")' | jq 'select(.timestamp > "'$(date +%Y-%m-%d)'")' | jq -s length; >=50; osascript -e "display notification         \"-- sent from the commandline.\"         with title \"ayoooooo\""
-cat logfile | jq 'select(.app=="Signal")' | jq 'select(.timestamp > "'$(date +%Y-%m-%d)'")' | jq -s length;>=100; pkill Signal
+# cat logfile | jq 'select(.app=="Signal")' | jq 'select(.timestamp > "'$(date +%Y-%m-%d)'")' | jq -s length; >=50; osascript -e "display notification         \"-- sent from the commandline.\"         with title \"ayoooooo\""
+# cat logfile | jq 'select(.app=="Signal")' | jq 'select(.timestamp > "'$(date +%Y-%m-%d)'")' | jq -s length;>=100; pkill Signal
+# If doing a wind-down activity late at night, you should wind-down
+# cat logfile | jq 'select(.url.contains("youtube"))' | jq 'select(.timestamp > "'$(date +%Y-%m-%d)'")' | jq -s length;>=1; nightshift on
+# LATE: after 9pm (beginning of evening)
+cat logfile | jq 'select(.timestamp > "'$(date +%Y-%m-%d)'T21:00")' | jq 'select(.title | contains("YouTube"))' | jq -s length;>=1; nightlight on
+# LATE: before 5am (start of next day)
+cat logfile | jq 'select(.timestamp < "'$(date +%Y-%m-%d)'T05:00")' | jq 'select(.title | contains("YouTube"))' | jq -s length;>=1; nightlight on
+# TODO: If it has been 30 minutes of a wind-down activity, kill the app
+# cat logfile | jq 'select(has("url"))' |  jq 'select(.url | contains("youtube"))' -c | jq .title

@@ -25,3 +25,8 @@ TODO -- jq commands that work well
 
 ## Roadmap
 - visualization primitives -- basically something like toggl, but for our _auto-generated_ data
+- turn QPA-specs into YAML format
+- Flag error (somehow) for not accepting input (when you've got a pipe waiting on input-start)
+    - maybe a timeout
+- get nanny-daemon to self-loop (maintain its own interval of 5 seconds or whatever
+- get launchd to output url

@@ -1,0 +1,27 @@
+# obviously need to modify this, just an example
+examples=(Application Url Title);
+PS3='What kind of thing would you like to limit? ';
+select opt in "${examples[@]}";
+do
+    echo "Ok, let's limit $opt"
+    break
+done;
+
+examples=($(cat discovered-urls.log));
+PS3='Which website would you like to limit? ';
+select opt in "${examples[@]}";
+do
+    echo "Ok, let's limit $opt"
+    read -r -p "For how long? " response
+    echo "Ok, we'll limit for $response"
+    break
+done;
+
+
+examples=(ShutdownSystem KillApp PlayAnnoyingNoise Nag);
+PS3='What should the consequence be? ';
+select opt in "${examples[@]}";
+do
+    echo "Ok, let's limit $opt"
+    break
+done;

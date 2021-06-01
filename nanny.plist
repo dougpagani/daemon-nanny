@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>local.nanny</string>
+        <key>Program</key>
+        <string>/Users/dougpa/.nvm/versions/node/v12.18.2/bin/node</string>
+
+        <key>ProgramArguments</key>
+            <array>
+                <string>/Users/dougpa/.nvm/versions/node/v12.18.2/bin/npm</string>
+                <string>/Users/dougpa/daemon-nanny</string>
+                <string>run</string>
+                <string>start</string>
+            </array>
+        <key>EnvironmentVariables</key>
+            <dict>
+                <key>PATH</key>
+                    <string>/usr/local/miniconda3/bin:/Users/dougpa/Langs/python/utils:/Users/dougpa/bin:/usr/local/opt/go/libexec/bin:/usr/local/sbin:/Users/dougpa/.nvm/versions/node/v12.18.2/bin:/usr/local/lib/ruby/gems/2.6.0/bin:/usr/local/opt/ruby/bin:/Users/dougpa/dotfiles/frags:/Users/dougpa/dotfiles/utils/devops-toolbelt:/Users/dougpa/dotfiles/utils/cms-utils:/Users/dougpa/dotfiles/utils/git-utils:/Users/dougpa/dotfiles/utils:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin</string>
+            </dict>
+        <!-- <key>StandardInPath</key> -->
+        <!--     <string>/tmp/nanny.stdin</string> -->
+        <!-- <key>StandardOutPath</key> -->
+        <!--     <string>/tmp/nanny.stdout</string> -->
+        <!-- <key>StandardErrorPath</key> -->
+        <!--     <string>/tmp/nanny.stderr</string> -->
+        <key>StandardOutPath</key>
+            <string>/Users/dougpa/daemon-nanny/cronlog</string>
+        <key>StandardErrorPath</key>
+            <string>/Users/dougpa/daemon-nanny/cronlog</string>
+        <key>WorkingDirectory</key>
+            <string>/Users/dougpa/daemon-nanny</string>
+        <key>StartInterval</key>
+            <integer>60</integer>
+        <!-- every 5 seconds -->
+    </dict>
+</plist>
